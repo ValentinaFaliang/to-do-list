@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
+
+:root {
+  --bg-color: #ababab;
+  --main-color: #ebe6e6;
+  --shadow: #757474;
+  --dark-shadow: #504f4f;
+  --indicator-border: #fff;
+}
+
+* {
+  all: unset;
+  display: revert;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-color);
+  font-family: Quicksand, serif;
+  font-size: 16px;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  width: 100%;
+  min-height: 100vh;
+}

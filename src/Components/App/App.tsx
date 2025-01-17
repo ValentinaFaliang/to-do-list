@@ -1,10 +1,25 @@
 import React from "react";
+import Main from "../Main";
+import Header from "../Header";
+import Footer from "../Footer";
 import "./App.css";
 
-const App: React.FC = () => {
+const App = () => {
   return (
     <div className="app">
-      <h1>Hello, React with Webpack and TypeScript!</h1>
+      <article className="app__container">
+        <section className="app__inner-container">
+          <header>
+            <Header />
+          </header>
+          <main>
+            <Main />
+          </main>
+          <footer>
+            <Footer />
+          </footer>
+        </section>
+      </article>
     </div>
   );
 };

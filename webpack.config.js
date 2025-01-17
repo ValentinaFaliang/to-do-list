@@ -54,9 +54,6 @@ module.exports = {
     }),
   ],
   devServer: {
-    static: path.join(__dirname, "dist"),
-    compress: true,
-    port: 3000,
     open: {
       app: {
         name: "Google Chrome",
@@ -64,5 +61,9 @@ module.exports = {
     },
     historyApiFallback: true,
   },
-  mode: "development",
+  performance: {
+    hints: false,
+    maxEntrypointSize: 512000,
+    maxAssetSize: 512000,
+  },
 };

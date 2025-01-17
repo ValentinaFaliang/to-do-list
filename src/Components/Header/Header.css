@@ -1,0 +1,17 @@
+.header {
+  width: 100%;
+
+  .indicator__container {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: var(--indicator-border);
+    box-shadow: inset -20px 25px 16px -7px var(--dark-shadow);
+  }
+
+  button {
+    img {
+      width: 20px;
+    }
+  }
+}
