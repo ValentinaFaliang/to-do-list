@@ -4,7 +4,7 @@ import "./Header.css";
 
 export const Header = () => {
   return (
-    <header className="header">
+    <div className="header">
       <section className="header__top">
         <div className="header__top__left"></div>
         <div className="header__top__right"></div>
@@ -24,6 +24,6 @@ export const Header = () => {
           </button>
         </div>
       </section>
-    </header>
+    </div>
   );
 };

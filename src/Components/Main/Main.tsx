@@ -1,13 +1,16 @@
 import React from "react";
+import Tasks from "../Tasks";
 import "./Main.css";
 
 export const Main = () => {
   return (
-    <main className="main">
+    <div className="main">
       <div className="main__container">
         <div className="main__left-container">
-          <section className="today-tasks"></section>
-          <section className="week-tasks"></section>
+          <section className="tasks__container">
+            <Tasks tasksDay="Today" />
+            <Tasks tasksDay="Week" />
+          </section>
         </div>
         <div className="main__right-container">
           <section className="tasks-status">
@@ -17,6 +20,6 @@ export const Main = () => {
           <section className="notes"></section>
         </div>
       </div>
-    </main>
+    </div>
   );
 };

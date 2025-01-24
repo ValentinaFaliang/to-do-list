@@ -7,8 +7,8 @@ import "./App.css";
 const App = () => {
   return (
     <div className="app">
-      <article className="app__container">
-        <section className="app__inner-container">
+      <div className="app__container">
+        <div className="app__inner-container">
           <header>
             <Header />
           </header>
@@ -18,8 +18,8 @@ const App = () => {
           <footer>
             <Footer />
           </footer>
-        </section>
-      </article>
+        </div>
+      </div>
     </div>
   );
 };

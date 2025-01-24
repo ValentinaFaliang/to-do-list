@@ -28,13 +28,13 @@
 }
 
 header {
-  height: 20%;
+  height: fit-content;
 }
 
 main {
-  height: 70%;
+  height: fit-content;
 }
 
 footer {
-  height: 10%;
+  height: fit-content;
 }

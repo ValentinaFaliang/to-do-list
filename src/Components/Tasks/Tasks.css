@@ -1,0 +1,25 @@
+.tasks {
+  width: 300px;
+  max-height: 200px;
+  min-height: 100px;
+  overflow: auto;
+  border-radius: 10px;
+  border: 2px solid var(--basic-black);
+
+  h2 {
+    font-weight: 400;
+    font-size: 20px;
+  }
+
+  ol {
+    list-style: none;
+
+    li::marker {
+      content: "";
+    }
+  }
+
+  input[type="checkbox"] {
+    appearance: auto;
+  }
+}

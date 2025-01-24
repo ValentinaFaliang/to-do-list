@@ -3,8 +3,8 @@ import "./Footer.css";
 
 export const Footer = () => {
   return (
-    <footer className="footer">
+    <div className="footer">
       <h1>footer</h1>
-    </footer>
+    </div>
   );
 };
