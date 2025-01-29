@@ -2,11 +2,14 @@
 
 :root {
   --bg-color: #ababab;
+  --bg-color-2: #dcd7d7;
+  --bg-color-3: #b48b8b;
   --main-color: #ebe6e6;
   --shadow: #757474;
   --dark-shadow: #504f4f;
   --indicator-border: #fff;
   --basic-black: #000;
+  --checked-color: #8f0404;
 }
 
 * {

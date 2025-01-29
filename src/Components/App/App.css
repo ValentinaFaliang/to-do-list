@@ -1,14 +1,14 @@
 .app {
   width: 100%;
-  min-height: 100vh;
+  height: 100%;
   display: flex;
   justify-content: center;
 }
 
 .app__container {
-  margin: 60px 0;
-  min-width: 1000px;
-  min-height: 600px;
+  margin: 30px 0;
+  width: 1000px;
+  height: 800px;
   background-color: var(--main-color);
   border-radius: 20px;
   box-shadow: -12px 17px 20px 11px var(--dark-shadow);

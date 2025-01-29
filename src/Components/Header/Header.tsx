@@ -1,5 +1,5 @@
 import React from "react";
-import checkIcon from "../../assets/checkMark.png";
+import checkAllBtn from "./../../assets/checkMark.png";
 import "./Header.css";
 
 export const Header = () => {
@@ -20,7 +20,7 @@ export const Header = () => {
         </div>
         <div className="button__container">
           <button>
-            <img src={checkIcon} alt="check mark" />
+            <img src={checkAllBtn} alt="check mark" />
           </button>
         </div>
       </section>

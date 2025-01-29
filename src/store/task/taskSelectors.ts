@@ -10,3 +10,7 @@ export const selectTodaysTasks = createSelector(selectAllTasks, (tasks) =>
 export const selectWeekTasks = createSelector(selectAllTasks, (tasks) =>
   tasks.filter((task) => !task.todaysTask),
 );
+
+export const selectCompletedTasks = createSelector(selectAllTasks, (tasks) =>
+  tasks.filter((task) => task.completed),
+);
