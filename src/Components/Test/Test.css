@@ -1,0 +1,19 @@
+.container {
+  width: 300px;
+  display: flex;
+  font-display: row;
+  justify-content: space-between;
+}
+
+ul {
+  width: 100px;
+  height: 100px;
+  background-color: #fff;
+
+  /* overflow: auto; */
+}
+
+li {
+  padding: 10px;
+  border: black 2px solid;
+}

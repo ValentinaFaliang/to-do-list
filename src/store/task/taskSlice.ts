@@ -31,9 +31,18 @@ const taskSlice = createSlice({
   initialState,
   reducers: {
     updateStatus: (state, { payload }) => {
-      const task = state.tasks.find((t) => t.id === payload.id);
+      state.tasks = state.tasks.map((task) =>
+        task.id === payload.id
+          ? { ...task, completed: payload.completed }
+          : task,
+      );
+    },
+    moveTask: (state, action) => {
+      const { id, toCompleted, toTodaysTask } = action.payload;
+      const task = state.tasks.find((t) => t.id === id);
       if (task) {
-        task.completed = payload.completed;
+        if (toCompleted !== undefined) task.completed = toCompleted;
+        if (toTodaysTask !== undefined) task.todaysTask = toTodaysTask;
       }
     },
   },
@@ -48,5 +57,5 @@ const taskSlice = createSlice({
   },
 });
 
-export const { updateStatus } = taskSlice.actions;
+export const { updateStatus, moveTask } = taskSlice.actions;
 export default taskSlice.reducer;

@@ -1,27 +1,20 @@
 import React, { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { fetchTasksData, updateStatus } from "../../store/task/taskSlice";
-import {
-  selectTodaysTasks,
-  selectWeekTasks,
-} from "../../store/task/taskSelectors";
+import { useAppDispatch } from "../../store/hooks";
+import { fetchTasksData } from "../../store/task/taskSlice";
 import { Task } from "../../types/tasks";
 import "./Tasks.css";
+import { useDroppable } from "@dnd-kit/core";
+import TaskItem from "../TaskItem";
 
 interface TasksProps {
-  tasksDay: string;
+  tasks: Task[];
+  today: boolean;
 }
-export const Tasks = ({ tasksDay }: TasksProps) => {
+export const Tasks = ({ tasks, today }: TasksProps) => {
   const dispatch = useAppDispatch();
-  const todaysTasks = useAppSelector(selectTodaysTasks);
-  const weekTasks = useAppSelector(selectWeekTasks);
-  let day: Task[];
-
-  if (tasksDay === "Today") {
-    day = todaysTasks;
-  } else {
-    day = weekTasks;
-  }
+  const { setNodeRef } = useDroppable({
+    id: today ? "todays-tasks" : "weeks-tasks",
+  });
 
   useEffect(() => {
     dispatch(fetchTasksData());
@@ -29,30 +22,15 @@ export const Tasks = ({ tasksDay }: TasksProps) => {
 
   return (
     <div className="tasks__outer-container">
-      <section className="tasks">
-        <h2>{`${tasksDay}'s tasks`}</h2>
-        <ul className="tasks__list">
-          {day.map((task) => (
-            <li key={task.id}>
-              <input
-                type="checkbox"
-                id={`task-check-${task.id}`}
-                checked={task.completed}
-                onClick={() =>
-                  dispatch(
-                    updateStatus({ id: task.id, completed: !task.completed }),
-                  )
-                }
-              />
-              <label
-                htmlFor={`task-check-${task.id}`}
-                style={task.completed ? { textDecoration: "line-through" } : {}}
-              >
-                {task.todo}
-              </label>
-            </li>
-          ))}
-        </ul>
+      <section className="tasks" ref={setNodeRef}>
+        <h2>{today ? `Today's Tasks` : `Week's Tasks`}</h2>
+        <div className="tasks__inner-container">
+          <ul className="tasks__list">
+            {tasks.map((task) => (
+              <TaskItem key={task.id} task={task} data={{ task }} />
+            ))}
+          </ul>
+        </div>
       </section>
     </div>
   );

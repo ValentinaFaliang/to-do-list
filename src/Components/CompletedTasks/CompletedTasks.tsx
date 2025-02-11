@@ -1,16 +1,23 @@
 import React from "react";
-import { useAppSelector } from "../../store/hooks";
-import { selectCompletedTasks } from "../../store/task/taskSelectors";
 import "./CompletedTasks.css";
+import { Task } from "../../types/tasks";
+import { useDroppable } from "@dnd-kit/core";
+import TaskItem from "../TaskItem";
 
-export const CompletedTasks = () => {
-  const completedTasks = useAppSelector(selectCompletedTasks);
+interface CompletedTasksProps {
+  tasks: Task[];
+}
+
+export const CompletedTasks = ({ tasks }: CompletedTasksProps) => {
+  const { setNodeRef } = useDroppable({
+    id: "completed-tasks",
+  });
   return (
-    <div className="completed-tasks">
+    <div ref={setNodeRef} className="completed-tasks">
       <h2>Completed Tasks!</h2>
       <ul>
-        {completedTasks.map((task) => (
-          <li key={task.id}>{task.todo}</li>
+        {tasks.map((task) => (
+          <TaskItem key={task.id} task={task} />
         ))}
       </ul>
     </div>

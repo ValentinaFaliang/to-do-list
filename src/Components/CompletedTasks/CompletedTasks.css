@@ -1,7 +1,7 @@
 .completed-tasks {
   width: 100%;
   height: 400px;
-  overflow-y: auto;
+  overflow: auto;
   background-color: var(--indicator-border);
   border-radius: 20px;
   border: 0.5px solid var(--basic-black);
@@ -16,17 +16,9 @@
   ul {
     margin-top: 10px;
     list-style: none;
-
-    li {
-      list-style: none;
-      padding-left: 20px;
-      background: url("./../../assets/check-mark.png") no-repeat left top;
-      background-size: 18px 18px;
-    }
-
-    li:hover {
-      color: var(--checked-color);
-      cursor: pointer;
-    }
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 0;
   }
 }

@@ -1,0 +1,13 @@
+li {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  height: auto;
+  margin-bottom: 10px;
+  z-index: 1001;
+}
+
+input[type="checkbox"] {
+  appearance: auto;
+  margin-right: 5px;
+}
