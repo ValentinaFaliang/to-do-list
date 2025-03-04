@@ -27,7 +27,7 @@ export const Tasks = ({ tasks, today }: TasksProps) => {
         <div className="tasks__inner-container">
           <ul className="tasks__list">
             {tasks.map((task) => (
-              <TaskItem key={task.id} task={task} data={{ task }} />
+              <TaskItem key={task.id} task={{ ...task }} data={{ task }} />
             ))}
           </ul>
         </div>
