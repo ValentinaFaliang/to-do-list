@@ -1,13 +1,37 @@
 li {
   display: flex;
   flex-direction: row;
+  justify-content: start;
   position: relative;
   height: auto;
   margin-bottom: 10px;
   z-index: 1001;
+  width: 100%;
+}
+
+.checkbox-text {
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
 }
 
 input[type="checkbox"] {
   appearance: auto;
   margin-right: 5px;
+}
+
+.drag-handle {
+  cursor: grab;
+  width: auto;
+  height: 100%;
+  position: relative;
+}
+
+.drag-handle:active {
+  cursor: grabbing;
+}
+
+.drag-icon {
+  width: 20px;
 }
