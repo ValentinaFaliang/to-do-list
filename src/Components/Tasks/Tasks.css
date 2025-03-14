@@ -24,10 +24,15 @@
   position: relative;
   overflow: visible;
 
-  h2 {
-    font-weight: 500;
-    font-size: 25px;
-    text-align: center;
+  .tasks-header {
+    display: grid;
+    grid-template-columns: 90% 10%;
+
+    h2 {
+      font-weight: 500;
+      font-size: 25px;
+      text-align: center;
+    }
   }
 
   .tasks__inner-container {

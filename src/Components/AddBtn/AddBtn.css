@@ -1,0 +1,17 @@
+.add-btn__container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+
+  button {
+    img {
+      width: 20px;
+    }
+  }
+}
+
+.add-task-modal__outter {
+  position: fixed;
+  z-index: 99999;
+}

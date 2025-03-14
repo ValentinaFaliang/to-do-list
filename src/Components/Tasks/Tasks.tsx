@@ -5,6 +5,7 @@ import { Task } from "../../types/tasks";
 import "./Tasks.css";
 import { useDroppable } from "@dnd-kit/core";
 import TaskItem from "../TaskItem";
+import AddBtn from "../AddBtn";
 
 interface TasksProps {
   tasks: Task[];
@@ -23,7 +24,11 @@ export const Tasks = ({ tasks, today }: TasksProps) => {
   return (
     <div className="tasks__outer-container">
       <section className="tasks" ref={setNodeRef}>
-        <h2>{today ? `Today's Tasks` : `Week's Tasks`}</h2>
+        <div className="tasks-header">
+          <h2>{today ? `Today's Tasks` : `Week's Tasks`}</h2>
+          <AddBtn />
+        </div>
+
         <div className="tasks__inner-container">
           <ul className="tasks__list">
             {tasks.map((task) => (

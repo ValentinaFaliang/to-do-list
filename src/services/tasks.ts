@@ -31,3 +31,26 @@ export async function getAllTasksByUserId(id: number) {
     console.log(error);
   }
 }
+
+export async function addTodo(todo: string, userId?: number) {
+  const body: { todo: string; completed: boolean; userId?: number } = {
+    todo,
+    completed: false,
+  };
+
+  if (userId !== undefined) {
+    body.userId = userId;
+  }
+
+  const response = await fetch("https://dummyjson.com/todos/add", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+  });
+
+  if (!response.ok) {
+    throw new Error("Ошибка при добавлении задачи");
+  }
+
+  return response.json();
+}

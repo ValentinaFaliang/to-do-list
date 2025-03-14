@@ -11,6 +11,10 @@
   --indicator-border: #fff;
   --basic-black: #000;
   --checked-color: #8f0404;
+  --modal-input: #f0eded;
+  --modal-overlay: #0000005c;
+  --blue-btn: #007bff;
+  --blue-btn-hover: #0056b3;
 }
 
 * {
