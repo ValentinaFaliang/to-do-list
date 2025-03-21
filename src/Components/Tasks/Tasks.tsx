@@ -5,7 +5,7 @@ import { Task } from "../../types/tasks";
 import "./Tasks.css";
 import { useDroppable } from "@dnd-kit/core";
 import TaskItem from "../TaskItem";
-import AddBtn from "../AddBtn";
+import AddBtn from "../Buttons/AddBtn";
 
 interface TasksProps {
   tasks: Task[];

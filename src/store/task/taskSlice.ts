@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { addTodo, getAllTasks } from "../../services/tasks";
+import { getAllTasks } from "../../services/tasks";
 import { Task, TaskDaily } from "../../types/tasks";
 
 export const fetchTasksData = createAsyncThunk(
@@ -10,17 +10,8 @@ export const fetchTasksData = createAsyncThunk(
   },
 );
 
-export const addNewTask = createAsyncThunk(
-  "task/addNewTask",
-  async ({ todo, userId }: { todo: string; userId: number }) => {
-    return await addTodo(todo, userId);
-  },
-);
-
 interface TaskState {
   tasks: TaskDaily[];
-  status: "idle" | "loading" | "succeeded" | "failed";
-  error: string | null;
 }
 
 const initialState: TaskState = {
@@ -33,8 +24,6 @@ const initialState: TaskState = {
       todaysTask: false,
     },
   ],
-  status: "idle",
-  error: null,
 };
 
 const taskSlice = createSlice({
@@ -56,29 +45,29 @@ const taskSlice = createSlice({
         if (toTodaysTask !== undefined) task.todaysTask = toTodaysTask;
       }
     },
+
+    addTaskLocally: (state, action) => {
+      const newTask: TaskDaily = {
+        id: Date.now(),
+        todo: action.payload,
+        completed: false,
+        userId: 0,
+        todaysTask: false,
+      };
+      state.tasks.push(newTask);
+    },
   },
+
   extraReducers: (builder) => {
-    builder
-      .addCase(fetchTasksData.fulfilled, (state, { payload }) => {
-        state.tasks = payload.map((task: Task) =>
-          task.id % 2 === 0
-            ? { ...task, todaysTask: true }
-            : { ...task, todaysTask: false },
-        );
-      })
-      .addCase(addNewTask.pending, (state) => {
-        state.status = "loading";
-      })
-      .addCase(addNewTask.fulfilled, (state, action) => {
-        state.status = "succeeded";
-        state.tasks.push(action.payload);
-      })
-      .addCase(addNewTask.rejected, (state, action) => {
-        state.status = "failed";
-        state.error = action.error.message ?? "Unknown error";
-      });
+    builder.addCase(fetchTasksData.fulfilled, (state, { payload }) => {
+      state.tasks = payload.map((task: Task) =>
+        task.id % 2 === 0
+          ? { ...task, todaysTask: true }
+          : { ...task, todaysTask: false },
+      );
+    });
   },
 });
 
-export const { updateStatus, moveTask } = taskSlice.actions;
+export const { updateStatus, moveTask, addTaskLocally } = taskSlice.actions;
 export default taskSlice.reducer;

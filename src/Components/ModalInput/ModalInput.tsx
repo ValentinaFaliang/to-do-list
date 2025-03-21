@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import "./ModalInput.css";
 import { useAppDispatch } from "../../store/hooks";
-import { addNewTask } from "../../store/task/taskSlice";
+import { addTaskLocally } from "../../store/task/taskSlice";
 
 interface ModalInputProps {
   isOpen: boolean;
@@ -24,7 +24,7 @@ export const ModalInput = ({ isOpen, onClose }: ModalInputProps) => {
   const handleAddTask = () => {
     if (!inputRef.current || !inputRef.current.value.trim()) return;
     if (inputRef.current) {
-      dispatch(addNewTask({ todo: inputRef.current.value, userId: 5 }));
+      dispatch(addTaskLocally(inputRef.current.value));
     }
     setTimeout(onClose, 100);
   };
