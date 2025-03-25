@@ -9,7 +9,7 @@ li {
   width: 100%;
 }
 
-.checkbox-text {
+.task-item__checkbox-and-text {
   width: 100%;
   display: flex;
   justify-content: start;

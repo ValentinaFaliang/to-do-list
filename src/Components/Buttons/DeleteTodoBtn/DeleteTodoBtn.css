@@ -1,0 +1,8 @@
+.delete-btn {
+  width: 10%;
+  align-items: center;
+
+  img {
+    width: 20px;
+  }
+}

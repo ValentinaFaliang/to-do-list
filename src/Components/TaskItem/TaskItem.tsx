@@ -6,6 +6,7 @@ import { useAppDispatch } from "../../store/hooks";
 import { moveTask } from "../../store/task/taskSlice";
 import dragIcon from "./../../assets/drag.png";
 import Tooltip from "../Tooltip";
+import DeleteTodoBtn from "../Buttons/DeleteTodoBtn";
 
 interface TaskItemProps {
   task: Task;
@@ -49,6 +50,7 @@ export const TaskItem = ({ task }: TaskItemProps) => {
   return (
     <li ref={setNodeRef} style={style} className="task-item">
       <div className="task-item__checkbox-and-text">
+        <DeleteTodoBtn id={task.id} />
         <input
           type="checkbox"
           checked={task.completed}

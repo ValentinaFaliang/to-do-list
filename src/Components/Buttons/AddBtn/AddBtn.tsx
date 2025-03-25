@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./AddBtn.css";
-import addBtn from "./../../assets/add.png";
+import addBtn from "./../../../assets/add.png";
 import ModalInput from "../../ModalInput";
 
 export const AddBtn = () => {
