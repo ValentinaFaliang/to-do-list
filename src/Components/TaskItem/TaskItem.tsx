@@ -47,6 +47,8 @@ export const TaskItem = ({ task }: TaskItemProps) => {
     dispatch(moveTask({ id: task.id, toCompleted: e.target.checked }));
   };
 
+  console.log(task.completed, "task item completed");
+
   return (
     <li ref={setNodeRef} style={style} className="task-item">
       <div className="task-item__checkbox-and-text">
@@ -56,7 +58,9 @@ export const TaskItem = ({ task }: TaskItemProps) => {
           checked={task.completed}
           onChange={handleChange}
         />
-        <span>{task.todo}</span>
+        <span className={task.completed ? "completed-task" : ""}>
+          {task.todo}
+        </span>
       </div>
 
       <div>
@@ -71,7 +75,9 @@ export const TaskItem = ({ task }: TaskItemProps) => {
         </span>
       </div>
 
-      {tooltipVisible && <Tooltip position={tooltipPos} />}
+      {tooltipVisible && (
+        <Tooltip position={tooltipPos} tooltipText="Grab me!" />
+      )}
     </li>
   );
 };

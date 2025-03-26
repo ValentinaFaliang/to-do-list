@@ -61,6 +61,13 @@ const taskSlice = createSlice({
       const { id } = action.payload;
       state.tasks = state.tasks.filter((task) => task.id !== id);
     },
+
+    completeAllTasks: (state, { payload }) => {
+      state.tasks = state.tasks.map((task) => ({
+        ...task,
+        completed: payload,
+      }));
+    },
   },
 
   extraReducers: (builder) => {
@@ -74,6 +81,11 @@ const taskSlice = createSlice({
   },
 });
 
-export const { updateStatus, moveTask, addTaskLocally, deleteTask } =
-  taskSlice.actions;
+export const {
+  updateStatus,
+  moveTask,
+  addTaskLocally,
+  deleteTask,
+  completeAllTasks,
+} = taskSlice.actions;
 export default taskSlice.reducer;

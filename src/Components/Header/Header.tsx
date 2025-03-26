@@ -1,6 +1,6 @@
 import React from "react";
-import checkAllBtn from "./../../assets/checkMark.png";
 import "./Header.css";
+import CompleteAllBtn from "../Buttons/CompleteAllBtn";
 
 export const Header = () => {
   return (
@@ -18,11 +18,7 @@ export const Header = () => {
         <div className="title__container">
           <h1>To-Do List</h1>
         </div>
-        <div className="button__container">
-          <button>
-            <img src={checkAllBtn} alt="check mark" />
-          </button>
-        </div>
+        <CompleteAllBtn />
       </section>
     </div>
   );
