@@ -14,3 +14,9 @@ export const selectWeekTasks = createSelector(selectAllTasks, (tasks) =>
 export const selectCompletedTasks = createSelector(selectAllTasks, (tasks) =>
   tasks.filter((task) => task.completed),
 );
+
+export const selectCompletionPercentage = createSelector(
+  [selectAllTasks, selectCompletedTasks],
+  (allTasks, completedTasks) =>
+    allTasks.length > 0 ? (completedTasks.length / allTasks.length) * 100 : 0,
+);

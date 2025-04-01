@@ -1,6 +1,7 @@
 import React from "react";
 import "./Header.css";
 import CompleteAllBtn from "../Buttons/CompleteAllBtn";
+import Indicator from "../Indicator";
 
 export const Header = () => {
   return (
@@ -10,11 +11,7 @@ export const Header = () => {
         <div className="header__top__right"></div>
       </section>
       <section className="header__middle">
-        <div className="indicator__container">
-          <div className="indicator">
-            {/* процент на сколько выполнены задачи */}
-          </div>
-        </div>
+        <Indicator />
         <div className="title__container">
           <h1>To-Do List</h1>
         </div>
