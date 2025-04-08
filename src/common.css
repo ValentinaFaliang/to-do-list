@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300..700&display=swap&subset=cyrillic");
 
 :root {
   --bg-color: #ababab;
@@ -26,9 +27,15 @@
   scroll-behavior: smooth;
 }
 
+/* html[lang="ru"] {
+  font-family: Poppins, Arial, sans-serif;
+  font-weight: 300;
+  font-style: normal;
+} */
+
 body {
   background-color: var(--bg-color);
-  font-family: Quicksand, serif;
+  font-family: Quicksand, Poppins, Arial, serif;
   font-size: 16px;
   font-optical-sizing: auto;
   font-weight: 300;

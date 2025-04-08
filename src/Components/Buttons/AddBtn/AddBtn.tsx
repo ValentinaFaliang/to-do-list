@@ -3,7 +3,11 @@ import "./AddBtn.css";
 import addBtn from "./../../../assets/add.png";
 import ModalInput from "../../ModalInput";
 
-export const AddBtn = () => {
+interface AddBtnProps {
+  today?: boolean;
+}
+
+export const AddBtn = ({ today }: AddBtnProps) => {
   const [openModal, setOpenModal] = useState(false);
 
   return (
@@ -14,7 +18,11 @@ export const AddBtn = () => {
         </button>
       </div>
 
-      <ModalInput isOpen={openModal} onClose={() => setOpenModal(false)} />
+      <ModalInput
+        isOpen={openModal}
+        onClose={() => setOpenModal(false)}
+        today={today}
+      />
     </>
   );
 };

@@ -49,10 +49,10 @@ const taskSlice = createSlice({
     addTaskLocally: (state, action) => {
       const newTask: TaskDaily = {
         id: Date.now(),
-        todo: action.payload,
+        todo: action.payload.value,
         completed: false,
         userId: 0,
-        todaysTask: false,
+        todaysTask: action.payload.today,
       };
       state.tasks.push(newTask);
     },

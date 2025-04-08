@@ -26,7 +26,7 @@ export const Tasks = ({ tasks, today }: TasksProps) => {
       <section className="tasks" ref={setNodeRef}>
         <div className="tasks-header">
           <h2>{today ? `Today's Tasks` : `Week's Tasks`}</h2>
-          <AddBtn />
+          <AddBtn today={today} />
         </div>
 
         <div className="tasks__inner-container">

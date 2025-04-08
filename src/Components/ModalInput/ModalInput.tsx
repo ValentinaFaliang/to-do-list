@@ -6,9 +6,10 @@ import { addTaskLocally } from "../../store/task/taskSlice";
 interface ModalInputProps {
   isOpen: boolean;
   onClose: () => void;
+  today?: boolean;
 }
 
-export const ModalInput = ({ isOpen, onClose }: ModalInputProps) => {
+export const ModalInput = ({ isOpen, onClose, today }: ModalInputProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -24,7 +25,7 @@ export const ModalInput = ({ isOpen, onClose }: ModalInputProps) => {
   const handleAddTask = () => {
     if (!inputRef.current || !inputRef.current.value.trim()) return;
     if (inputRef.current) {
-      dispatch(addTaskLocally(inputRef.current.value));
+      dispatch(addTaskLocally({ value: inputRef.current.value, today }));
     }
     setTimeout(onClose, 100);
   };
