@@ -47,8 +47,6 @@ export const TaskItem = ({ task }: TaskItemProps) => {
     dispatch(moveTask({ id: task.id, toCompleted: e.target.checked }));
   };
 
-  console.log(task.completed, "task item completed");
-
   return (
     <li ref={setNodeRef} style={style} className="task-item">
       <div className="task-item__checkbox-and-text">

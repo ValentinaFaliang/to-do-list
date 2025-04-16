@@ -27,11 +27,6 @@
   scroll-behavior: smooth;
 }
 
-/* html[lang="ru"] {
-  font-family: Poppins, Arial, sans-serif;
-  font-weight: 300;
-  font-style: normal;
-} */
 
 body {
   background-color: var(--bg-color);

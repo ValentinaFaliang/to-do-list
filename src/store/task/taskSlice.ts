@@ -10,20 +10,19 @@ export const fetchTasksData = createAsyncThunk(
   },
 );
 
+const storedTasks = localStorage.getItem("tasks");
+
 interface TaskState {
   tasks: TaskDaily[];
 }
 
 const initialState: TaskState = {
-  tasks: [
-    {
-      id: 0,
-      todo: "",
-      completed: false,
-      userId: 0,
-      todaysTask: false,
-    },
-  ],
+  tasks: storedTasks
+    ? JSON.parse(storedTasks).map((task: Task) => ({
+        ...task,
+        todaysTask: "todaysTask" in task ? task.todaysTask : false,
+      }))
+    : [],
 };
 
 const taskSlice = createSlice({
@@ -36,6 +35,7 @@ const taskSlice = createSlice({
           ? { ...task, completed: payload.completed }
           : task,
       );
+      localStorage.setItem("tasks", JSON.stringify(state.tasks));
     },
     moveTask: (state, action) => {
       const { id, toCompleted, toTodaysTask } = action.payload;
@@ -44,6 +44,7 @@ const taskSlice = createSlice({
         if (toCompleted !== undefined) task.completed = toCompleted;
         if (toTodaysTask !== undefined) task.todaysTask = toTodaysTask;
       }
+      localStorage.setItem("tasks", JSON.stringify(state.tasks));
     },
 
     addTaskLocally: (state, action) => {
@@ -54,12 +55,15 @@ const taskSlice = createSlice({
         userId: 0,
         todaysTask: action.payload.today,
       };
-      state.tasks.push(newTask);
+      const updatedTasks = [...state.tasks, newTask];
+      state.tasks = updatedTasks;
+      localStorage.setItem("tasks", JSON.stringify(updatedTasks));
     },
 
     deleteTask: (state, action) => {
       const { id } = action.payload;
       state.tasks = state.tasks.filter((task) => task.id !== id);
+      localStorage.setItem("tasks", JSON.stringify(state.tasks));
     },
 
     completeAllTasks: (state, { payload }) => {
@@ -67,6 +71,7 @@ const taskSlice = createSlice({
         ...task,
         completed: payload,
       }));
+      localStorage.setItem("tasks", JSON.stringify(state.tasks));
     },
   },
 

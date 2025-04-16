@@ -10,7 +10,6 @@ interface DeleteTodoBtnProps {
 
 export const DeleteTodoBtn = ({ id }: DeleteTodoBtnProps) => {
   const dispatch = useAppDispatch();
-  console.log({ id }, "delete");
   const handleDelete = () => {
     dispatch(deleteTask({ id }));
   };

@@ -6,9 +6,7 @@ export async function getAllUsers() {
   try {
     const users: User[] = [];
     const res: UsersResponse = await http<UsersResponse>(url);
-    console.log(res);
     users.push(...res.users);
-    console.log(users);
     return users;
   } catch (error) {
     console.log(error);
