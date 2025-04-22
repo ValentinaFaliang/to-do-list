@@ -18,7 +18,9 @@ export const Tasks = ({ tasks, today }: TasksProps) => {
   });
 
   useEffect(() => {
-    dispatch(fetchTasksData());
+    if (!localStorage.getItem("tasks")) {
+      dispatch(fetchTasksData());
+    }
   }, [dispatch]);
 
   return (

@@ -13,7 +13,6 @@ const App = () => {
             <Header />
           </header>
           <main>
-            {/* <Test /> */}
             <Main />
           </main>
           <footer>
