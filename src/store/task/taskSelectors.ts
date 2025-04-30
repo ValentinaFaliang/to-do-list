@@ -15,6 +15,16 @@ export const selectCompletedTasks = createSelector(selectAllTasks, (tasks) =>
   tasks.filter((task) => task.completed),
 );
 
+export const selectSearchedTasks = createSelector(
+  [selectAllTasks, (state: RootState) => state.task.searchQuery],
+  (tasks, searchQuery) => {
+    if (!searchQuery) return tasks;
+    return tasks.filter((task) =>
+      task.todo.toLowerCase().includes(searchQuery.toLowerCase()),
+    );
+  },
+);
+
 export const selectCompletionPercentage = createSelector(
   [selectAllTasks, selectCompletedTasks],
   (allTasks, completedTasks) =>

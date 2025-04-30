@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { useAppDispatch } from "../../store/hooks";
 import { fetchTasksData } from "../../store/task/taskSlice";
-import { Task } from "../../types/tasks";
 import "./Tasks.css";
 import { useDroppable } from "@dnd-kit/core";
 import TaskItem from "../TaskItem";
 import AddBtn from "../Buttons/AddBtn";
+import { Task } from "../../types/tasks";
 
 interface TasksProps {
   tasks: Task[];

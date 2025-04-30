@@ -8,16 +8,18 @@ import {
   DragOverlay,
   DragStartEvent,
 } from "@dnd-kit/core";
-import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { useAppDispatch } from "../../store/hooks";
 import { moveTask } from "../../store/task/taskSlice";
 import TaskItem from "../TaskItem";
 import { Task } from "../../types/tasks";
 import { createPortal } from "react-dom";
+import { useSelector } from "react-redux";
+import { selectSearchedTasks } from "../../store/task/taskSelectors";
 
 export const Main = () => {
   const dispatch = useAppDispatch();
-  const tasks = useAppSelector((state) => state.task.tasks);
   const [activeTask, setActiveTask] = useState<Task | null>(null);
+  const filteredTasks = useSelector(selectSearchedTasks);
 
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
@@ -50,18 +52,18 @@ export const Main = () => {
         <div className="main__left-container">
           <section className="tasks__container">
             <Tasks
-              tasks={tasks.filter((t) => !t.completed && t.todaysTask)}
+              tasks={filteredTasks.filter((t) => !t.completed && t.todaysTask)}
               today={true}
             />
             <Tasks
-              tasks={tasks.filter((t) => !t.completed && !t.todaysTask)}
+              tasks={filteredTasks.filter((t) => !t.completed && !t.todaysTask)}
               today={false}
             />
           </section>
         </div>
         <div className="main__right-container">
           <section className="completed-tasks__container">
-            <CompletedTasks tasks={tasks.filter((t) => t.completed)} />
+            <CompletedTasks tasks={filteredTasks.filter((t) => t.completed)} />
           </section>
         </div>
       </div>

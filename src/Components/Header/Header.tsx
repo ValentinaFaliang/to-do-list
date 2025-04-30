@@ -2,6 +2,7 @@ import React from "react";
 import "./Header.css";
 import CompleteAllBtn from "../Buttons/CompleteAllBtn";
 import Indicator from "../Indicator";
+import TaskSearch from "../TaskSearch";
 
 export const Header = () => {
   return (
@@ -16,6 +17,9 @@ export const Header = () => {
           <h1>To-Do List</h1>
         </div>
         <CompleteAllBtn />
+        <div className="search__container">
+          <TaskSearch />
+        </div>
       </section>
     </div>
   );

@@ -81,5 +81,12 @@
         font-weight: 700;
       }
     }
+
+    .search__container {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      grid-area: 2/3;
+    }
   }
 }

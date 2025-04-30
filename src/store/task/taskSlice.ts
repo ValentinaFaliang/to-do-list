@@ -14,6 +14,7 @@ const storedTasks = localStorage.getItem("tasks");
 
 interface TaskState {
   tasks: TaskDaily[];
+  searchQuery: string;
 }
 
 const initialState: TaskState = {
@@ -23,6 +24,7 @@ const initialState: TaskState = {
         todaysTask: "todaysTask" in task ? task.todaysTask : false,
       }))
     : [],
+  searchQuery: "",
 };
 
 const taskSlice = createSlice({
@@ -73,6 +75,9 @@ const taskSlice = createSlice({
       }));
       localStorage.setItem("tasks", JSON.stringify(state.tasks));
     },
+    setSearchQuery: (state, { payload }) => {
+      state.searchQuery = payload;
+    },
   },
 
   extraReducers: (builder) => {
@@ -92,5 +97,6 @@ export const {
   addTaskLocally,
   deleteTask,
   completeAllTasks,
+  setSearchQuery,
 } = taskSlice.actions;
 export default taskSlice.reducer;
