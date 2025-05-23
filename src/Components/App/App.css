@@ -1,8 +1,34 @@
 .app {
   width: 100%;
   height: 100%;
+}
+
+.app__background {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 60% 1fr;
+  justify-content: center;
+  justify-items: center;
+  overflow: hidden;
+}
+
+.app__background-notes {
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
+}
+
+.app__background-notes.left {
+  align-items: end;
+  margin-left: 10px;
+  transform: rotate(5deg);
+}
+
+.app__background-notes.right {
+  margin-right: 10px;
+  align-items: start;
+  transform: scaleX(-1) rotate(10deg);
 }
 
 .app__container {

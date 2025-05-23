@@ -24,7 +24,6 @@ export const TaskSearch = () => {
     setSearchTask(e.target.value);
   };
 
-  console.log(debouncedSearchItem, searchTask);
   return (
     <div className="task-search">
       <input
